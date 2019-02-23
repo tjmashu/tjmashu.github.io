@@ -29,10 +29,10 @@
     .left {
         ul {
             >h2 {
-                color: #333;
+                color: #ccc;
             }
             li {
-                color: #333;
+                color: #ccc;
                 margin: 0;
             }
         }
@@ -59,7 +59,7 @@
         // }
     }
 }
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 200px) {
     .page[post] {
         .left {
             font-size: 15px;
