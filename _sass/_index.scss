@@ -13,10 +13,10 @@
                 list-style: none;
             }
             li {
-                color: #ccc;
+                color: #333;
                 h2 {
                     border: none;
-                    font-size: 20px;
+                    font-size: 27px;
                     margin: 0;
                 }
                 .label {
@@ -37,13 +37,13 @@
                 }
                 .excerpt {
                     h2 {
-                        font-size: 16px;
+                        font-size: 24px;
                     }
                     h3 {
-                        font-size: 14px;
+                        font-size: 22px;
                     }
                     h4 {
-                        font-size: 12px;
+                        font-size: 20px;
                     }
                 }
                 .read-all {
@@ -153,17 +153,17 @@
     .page[index] {
         .left>ul li {
             h2 {
-                font-size: 20px;
+                font-size: 22px;
             }
             .excerpt {
                 h2 {
-                    font-size: 16px;
+                    font-size: 20px;
                 }
                 h3 {
-                    font-size: 14px;
+                    font-size: 18px;
                 }
                 h4 {
-                    font-size: 12px;
+                    font-size: 16px;
                 }
                 li{
                     margin: 0;
