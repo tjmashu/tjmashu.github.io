@@ -44,13 +44,10 @@ type: page
 <!-- * [豆瓣](https://www.douban.com/people/42525035/) -->
 <!-- * [豆瓣音乐人-浩阳的小站](https://site.douban.com/haoyangaiyinyue/) -->
 
-## About my site
+## Update Logs
 
 **网站原始模版来自于Gaohaoyang，本站对界面略有修改并增加来必力评论功能，**
 **感兴趣的读者可以访问原网站模版的作者Gaohaoyang的github主页：[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
-
-
-### Updates
 
 *2019.2.23*
 
