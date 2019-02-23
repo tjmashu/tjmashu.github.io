@@ -11,9 +11,9 @@ type: page
 
 ## 关于我
 
-<iframe src="https://githubbadge.appspot.com/gaohaoyang?s=1" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>
 
-对数据化运营感兴趣，从数据中发现机会帮助业务增长是一件让人兴奋的事，
+从数据中发现机会帮助业务增长是一件让人兴奋的事，
+
 要学习的东西很多，一直在路上，加油！
 
 
