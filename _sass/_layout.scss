@@ -172,7 +172,7 @@
 }
 
 .page-heading {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .post-list {
@@ -209,7 +209,7 @@
     line-height: 1;
 
     @include media-query($on-laptop) {
-        font-size: 36px;
+        font-size: 15px;
     }
 }
 
@@ -217,26 +217,26 @@
     margin-bottom: $spacing-unit;
 
     h2 {
-        font-size: 32px;
+        font-size: 15px;
 
         @include media-query($on-laptop) {
-            font-size: 28px;
+            font-size: 15px;
         }
     }
 
     h3 {
-        font-size: 26px;
+        font-size: 12px;
 
         @include media-query($on-laptop) {
-            font-size: 22px;
+            font-size: 12px;
         }
     }
 
     h4 {
-        font-size: 20px;
+        font-size: 10px;
 
         @include media-query($on-laptop) {
-            font-size: 18px;
+            font-size: 10px;
         }
     }
 }

@@ -13,7 +13,7 @@
                 list-style: none;
             }
             li {
-                color: #333;
+                color: #ccc;
                 h2 {
                     border: none;
                     font-size: 20px;
@@ -37,13 +37,13 @@
                 }
                 .excerpt {
                     h2 {
-                        font-size: 24px;
+                        font-size: 20px;
                     }
                     h3 {
-                        font-size: 22px;
+                        font-size: 16px;
                     }
                     h4 {
-                        font-size: 20px;
+                        font-size: 14px;
                     }
                 }
                 .read-all {
@@ -149,7 +149,7 @@
         }
     }
 }
-@media screen and (max-width: 200px) {
+@media screen and (max-width: 770px) {
     .page[index] {
         .left>ul li {
             h2 {
