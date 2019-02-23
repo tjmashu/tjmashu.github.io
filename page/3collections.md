@@ -10,7 +10,8 @@ type: page
 {:toc}
 
 ## 理论
-[林轩田-机器学习技法](https://www.bilibili.com/video/av36760800)
+### 机器学习
+* [林轩田-机器学习技法](https://www.bilibili.com/video/av36760800)
 
 ## GitBook 及其插件
 
