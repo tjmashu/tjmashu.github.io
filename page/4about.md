@@ -9,7 +9,7 @@ type: page
 * content
 {:toc}
 
-## 简历
+## Resume
 
 **2018.11- 某O2O, 用户与渠道运营数据分析师**
 * 与产品、运营、研发协同，为产品AB测试和业务运营决策制定合适的数据指标、提供数据分析结论、并出具周期报表；
@@ -29,7 +29,7 @@ type: page
 
 **从数据中发现机会帮助业务增长是一件让人兴奋的事，要学习的东西很多，一直在路上，加油！**
 
-## 联系我
+## Contact me
 
 * GitHub：[tjmashu](https://github.com/tjmashu)
 * email：1078855084@qq.com
@@ -40,13 +40,13 @@ type: page
 <!-- * [豆瓣](https://www.douban.com/people/42525035/) -->
 <!-- * [豆瓣音乐人-浩阳的小站](https://site.douban.com/haoyangaiyinyue/) -->
 
-## 关于本站
+## About my site
 
 **网站原始模版来自于Gaohaoyang，本站对界面略有修改并增加来必力评论功能，**
 **感兴趣的读者可以访问原网站模版的作者Gaohaoyang的github主页：[https://github.com/Gaohaoyang/gaohaoyang.github.io](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
 
 
-### 更新日志
+### Updates
 
 *2019.2.23*
 
@@ -54,7 +54,7 @@ type: page
 
 
 
-## 友情链接
+## Links
 
 [莫凡Python](https://morvanzhou.github.io) \| [崔庆才的个人博客](https://cuiqingcai.com/) 
 
