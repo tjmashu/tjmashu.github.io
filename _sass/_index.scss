@@ -15,8 +15,6 @@
             }
             li {
                 color: #333;
-                height:160px;
-                overflow:hidden;
                 h2 {
                     border: none;
                     font-size: 20px;
@@ -40,6 +38,8 @@
                     }
                 }
                 .excerpt {
+                    height:160px;
+                    overflow:hidden;
                     h2 {
                         font-size: 24px;
                     }
