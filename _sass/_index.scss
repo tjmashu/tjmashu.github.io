@@ -38,12 +38,10 @@
                     }
                 }
                 .excerpt {
+                    line-height:1em;
+                    height:2em;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    word-break: break-all;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;  // 控制多行的行数
-                    -webkit-box-orient: vertical;
                     h2 {
                         font-size: 20px;
                     }
