@@ -52,7 +52,7 @@
                         font-size: 12px;
                     }
                 }
-                .excerpt::after {
+                .excerpt:after {
                     content:"...";
                     position:absolute;
                     bottom:0;
