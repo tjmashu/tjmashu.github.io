@@ -39,7 +39,7 @@
                 }
                 .excerpt {
                     height:60px;
-                    display: -webkit-line-clamp: 2; /* 限制在一个块元素显示的文本的行数 */
+                    display: -webkit-line-clamp: 2; /*限制在一个块元素显示的文本的行数*/
                     -webkit-box-orient: vertical; /*垂直排列 */
                     -word-break: break-all;  /*内容自动换行*/
                     overflow:hidden;
