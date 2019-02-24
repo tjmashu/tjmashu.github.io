@@ -52,6 +52,14 @@
                         font-size: 12px;
                     }
                 }
+                .excerpt::after {
+                    content:"...";
+                    position:absolute;
+                    bottom:0;
+                    right:0;
+                    padding:0 10px;
+
+                }
                 .read-all {
                     text-align: right;
                     font-size: 14px;
