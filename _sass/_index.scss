@@ -38,11 +38,11 @@
                     }
                 }
                 .excerpt {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     display: -webkit-box;/*设置成弹性盒子*/
                     -webkit-line-clamp: 2;/*显示的个数*/
                     -webkit-box-orient: vertical;/*属性规定框的子元素应该被水平或垂直排列。*/
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     h2 {
                         font-size: 20px;
                     }
