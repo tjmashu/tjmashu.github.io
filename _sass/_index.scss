@@ -40,6 +40,7 @@
                 .excerpt {
                     height:60px;
                     overflow:hidden;
+                    white-space:nowrap; 
                     text-overflow:ellipsis;
                     h2 {
                         font-size: 24px;
