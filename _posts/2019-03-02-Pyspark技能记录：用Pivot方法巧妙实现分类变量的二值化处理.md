@@ -39,8 +39,7 @@ author: MaShu
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
 ```
 ## 如何实现二值化？——Pivot方法介绍
-** 什么是Pivot? **
-
+**什么是Pivot?**
 具体见下图：
 ![](https://github.com/tjmashu/tjmashu.github.io/blob/master/pics/Pivot%20%E5%92%8CUnpivot.png)
 先看下面的例子了解下PySpark DataFrame的Pivot实现方法：
@@ -187,7 +186,7 @@ if __name__ == '__main__':
     for col in colnames: 
      	# 非分类变量列跳过操作
         if col<>'userid':
-        	# 获取每个分类变量的取值范围，这一点就不用像SQL中的case...when...then...else...end那样需要手动穷举啦
+            # 获取每个分类变量的取值范围，这一点就不用像SQL中的case...when...then...else...end那样需要手动穷举啦
             value_sets=sparkdf.select(col).distinct().rdd.map(lambda r: r[0]).collect() 
             newdf_pivot = newdf.groupBy('userid')\ # 使用主键分组
                         .pivot(col, value_sets)\ # 按照分类变量取值进行聚合
@@ -207,5 +206,5 @@ if __name__ == '__main__':
 
 ```
 
-** 想想，如果有空值要怎么操作？**
+**想想，如果有空值要怎么操作**
 我的答案是——遍历列时，先把空值赋值为'NA'(String),-1(Int),只要其他取值能不一样就好，其他代码一样。
