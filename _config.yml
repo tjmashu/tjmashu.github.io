@@ -7,7 +7,7 @@
 
 # Site settings
 title: MaShu
-brief-intro: A Little Data Analyst
+brief-intro: A Data Analyst：严守保密原则，只谈技术技巧，无关业务
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tjmashu.github.io" # the base hostname & protocol for your site
 
@@ -23,7 +23,7 @@ email: 1078855084@qq.com
 #linkedIn_username: 
 #dribbble_username:
 
-description_footer: 一只数据分析狮的填坑之旅。
+description_footer: 一只数据分析狮的修行之路。
 
 # comments
 # two ways to comment, only choose one, and use your own short name
