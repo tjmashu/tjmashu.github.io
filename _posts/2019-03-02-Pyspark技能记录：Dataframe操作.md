@@ -75,7 +75,7 @@ only showing top 3 rows
 ```
 6
 ```
-##### 3.2.4 查询某列为null的行
+##### 3.2.4 查询某列为取值为空的行
 ```
 from pyspark.sql.functions import isnull
 df1=df.filter(isnull('gender'))

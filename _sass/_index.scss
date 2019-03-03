@@ -96,7 +96,9 @@
                     margin-right: 3px;
                 }
                 .content-ul[cate] {
+                    weight:100%;
                     overflow: hidden;
+                    text-overflow: ellipsis;
                     list-style: none;
                     margin: 0;
                     padding: 0;
