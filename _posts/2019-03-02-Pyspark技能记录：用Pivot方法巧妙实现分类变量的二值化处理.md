@@ -182,8 +182,10 @@ if __name__ == '__main__':
     newdf = sparkdf.withColumn("x", lit(1)) 
     # 获取列名称
     colnames=sparkdf.columns 
+	
 	# 遍历列
     for col in colnames: 
+     	
      	# 非分类变量列跳过操作
         if col<>'userid':
             # 获取每个分类变量的取值范围，这一点就不用像SQL中的case...when...then...else...end那样需要手动穷举啦
@@ -192,9 +194,12 @@ if __name__ == '__main__':
                         .pivot(col, value_sets)\ # 按照分类变量取值进行聚合
                         .agg(F.avg('x'))\
                         .fillna(0) # 分组中没有该取值的则为0
+            
             # 为了保留列变量名名称，重命名新的列为：列名_取值
             for value in value_sets: 
                 newdf_pivot=newdf_pivot.withColumnRenamed(str(value),col+'_'+str(value))
+            
+            # 为了与原Dataframe的主键userid区分,重命名userid为uid
             newdf_pivot=newdf_pivot.withColumnRenamed('userid','uid') # 为了与原Dataframe的主键userid区分,重命名userid为uid
 
             newdf_pivot.show()
@@ -206,5 +211,6 @@ if __name__ == '__main__':
 
 ```
 
-**想想，如果有空值要怎么操作**
+**想想，如果有空值要怎么操作?**
+
 我的答案是——遍历列时，先把空值赋值为'NA'(String),-1(Int),只要其他取值能不一样就好，其他代码一样。
