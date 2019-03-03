@@ -4,7 +4,6 @@
         transition: 0.5s ease;
         &:hover {
             color: #000;
-            text-decoration:underline;
         }
     }
     .left {
@@ -102,7 +101,6 @@
                     padding: 0;
                     li {
                         font-size: 14px;
-                        min-width: 0;
                         a {
                             display: block;
                             width: 100%;
