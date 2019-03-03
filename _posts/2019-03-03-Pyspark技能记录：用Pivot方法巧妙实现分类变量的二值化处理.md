@@ -13,7 +13,7 @@ author: MaShu
 
 **二值化处理的效果如下：**
 数据处理前：
-```
+```python
 +------+------+-----+---+
 |userid|gender|level|vip|
 +------+------+-----+---+
@@ -26,7 +26,7 @@ author: MaShu
 +------+------+-----+---+ 
 ```
 数据处理后：
-```
+```python
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
 |userid|gender|level|vip|  x|gender_F|gender_M|level_L|level_M|level_H|vip_0|vip_1|
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
@@ -43,7 +43,7 @@ author: MaShu
 具体见下图：
 ![](https://github.com/tjmashu/tjmashu.github.io/blob/master/pics/Pivot%20%E5%92%8CUnpivot.png?raw=true)
 先看下面的例子了解下PySpark DataFrame的Pivot实现方法：
-```
+```python
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -56,7 +56,7 @@ df = spark.createDataFrame([('0001','F','H',1), ('0002','M','M',0), ('0003','F',
 
 ```
 样本数据如下:
-```
+```python
 +------+------+-----+---+
 |userid|gender|level|vip|
 +------+------+-----+---+
@@ -75,14 +75,14 @@ df = spark.createDataFrame([('0001','F','H',1), ('0002','M','M',0), ('0003','F',
 - 汇总数字字段，本例中是userid；
 
 代码如下:
-```
+```python
 df_pivot = df.groupBy('gender')\
                 .pivot('level', ['H','M','L'])\
                 .agg(F.countDistinct('userid'))\
                 .fillna(0)
 ```
 结果如下:
-```
+```python
 +------+---+---+---+
 |gender|  H|  M|  L|
 +------+---+---+---+
@@ -93,7 +93,7 @@ df_pivot = df.groupBy('gender')\
 ## 如何实现二值化？——Pivot方法技巧应用
 
 受这种方法启发，我们可以对原数据新增一列：
-```
+```python
 +------+------+-----+---+---+
 |userid|gender|level|vip|  x|
 +------+------+-----+---+---+
@@ -107,14 +107,14 @@ df_pivot = df.groupBy('gender')\
 ```
 然后对每一个分类特征变量列,以主键（主键意味着不重复，这里是user_id）为分组，进行聚合（sum和avg都可以）：
 
-```
+```python
 newdf_pivot = newdf.groupBy('userid')\
                         .pivot(col, value_sets)\
                         .agg(F.avg('x'))\
                         .fillna(0)
 ```
 于是得到若干个列切片的Dataframe, 这里user_id重命名成uid是为了跟主键user_id区别:
-```
+```python
 +----+--------+--------+
 | uid|gender_F|gender_M|
 +----+--------+--------+
@@ -149,7 +149,7 @@ newdf_pivot = newdf.groupBy('userid')\
 +----+-----+-----+
 ```
 然后把原Dataframe跟上面的Dataframe进行列合并，去掉uid列，最终得到：
-```
+```python
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
 |userid|gender|level|vip|  x|gender_F|gender_M|level_L|level_M|level_H|vip_0|vip_1|
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
@@ -163,7 +163,7 @@ newdf_pivot = newdf.groupBy('userid')\
 ```
 
 全部代码：
-```
+```python
 from pyspark.conf import SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit

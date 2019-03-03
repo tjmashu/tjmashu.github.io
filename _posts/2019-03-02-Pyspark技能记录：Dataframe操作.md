@@ -11,17 +11,17 @@ author: MaShu
 
 数据分析师通常用Hive SQL进行操作，但其实可以考虑换成用Pyspark。Spark是基于内存计算的，比Hive快，PySpark SQL模块的很多函数和方法与Hive SQL中的关键字一样，Pyspark还可与Python中的模块结合使用。不过Pyspark Dataframe和Pandas DataFrame差别还是比较大，这里对Pyspark Dataframe的基本操作进行总结。
 ## 1. 连接本地spark
-```
+```python
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 ```
 ## 2.创建DataFrame
 **用Spark SQL创建DataFrame:**
-```
+```python
 sparkdf = spark.sql(""" select * from table_name """)
 ```
-**手动创建DataFrame**
-```
+**手动创建DataFrame:**
+```python
 df = spark.createDataFrame([('0001','F','H',1), ('0002','M','M',0), ('0003','F','L',1),
                             ('0004','F','H',0), ('0005','M','M',1), ('0006','F','H',1)
                            ], ['userid','gender','level','vip'])
@@ -30,7 +30,7 @@ df = spark.createDataFrame([('0001','F','H',1), ('0002','M','M',0), ('0003','F',
 #### 3.1 概况查询
 ##### 3.1.1 以树形式打印概要
 `df.printSchema()`
-```
+```python
 root
  |-- userid: string (nullable = true)
  |-- gender: string (nullable = true)
@@ -39,7 +39,7 @@ root
 ```
 ##### 3.1.2 查询概况
 `df.describe().show()`
-```
+```python
 +-------+------------------+------+-----+------------------+
 |summary|            userid|gender|level|               vip|
 +-------+------------------+------+-----+------------------+
@@ -53,7 +53,7 @@ root
 #### 3.2 行查询
 ##### 3.2.1 打印前3行
 `df.show(3)`
-```
+```python
 +------+------+-----+---+
 |userid|gender|level|vip|
 +------+------+-----+---+
@@ -65,18 +65,18 @@ only showing top 3 rows
 ```
 ##### 3.2.2 获取头3行到本地
 `df.head(3)`或者`df.take(3)`，两者输出一样，注意数字不能为负。
-```
+```python
 [Row(userid='0001', gender='F', level='H', vip=1),
  Row(userid='0002', gender='M', level='M', vip=0),
  Row(userid='0003', gender='F', level='L', vip=1)]
 ```
 ##### 3.2.3 行计数
 `df.count()`
-```
+```python
 6
 ```
 ##### 3.2.4 查询某列为取值为空的行
-```
+```python
 from pyspark.sql.functions import isnull
 df1=df.filter(isnull('gender'))
 df1.show()
@@ -86,10 +86,10 @@ df1.show()
 +------+------+-----+---+
 +------+------+-----+---+
 ```
-##### 3.3.5 行去重
+##### 3.2.5 行去重
 **输出是DataFrame:**
 `df.select('level').distinct().show()`
-```
+```python
 +-----+
 |level|
 +-----+
@@ -100,13 +100,28 @@ df1.show()
 ```
 **输出是Row类:**
 `df.select('level').distinct().collect()`
-```
+```python
 [Row(level='M'), Row(level='L'), Row(level='H')]
 ```
 **输出是List:**
 `df.select('level').distinct().rdd.map(lambda r: r[0]).collect()`
-```
+```python
 ['M', 'L', 'H']
 ```
-
-
+##### 3.2.6 随机抽样
+`sample = df.sample(False,0.5,0) # randomly select 50% of lines`
+```python
++------+------+-----+---+
+|userid|gender|level|vip|
++------+------+-----+---+
+|  0002|     M|    M|  0|
+|  0004|     F|    H|  0|
+|  0005|     M|    M|  1|
++------+------+-----+---+
+```
+#### 3.3 列查询
+##### 3.3.1 获取Row元素的所有列名
+`df.columns`
+```python
+['userid', 'gender', 'level', 'vip']
+```
