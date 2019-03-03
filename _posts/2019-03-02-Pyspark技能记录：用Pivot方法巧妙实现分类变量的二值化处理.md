@@ -10,6 +10,7 @@ author: MaShu
 {:toc}
 
 机器学习中特征变量有两种：分类变量和顺序变量，对分类变量需要进行二值化处理，Pyspark也提供One-Hot方法，但和sklearn中的One-Hot一样，新的变量不能保留原变量名称，但是我们可以用Pivot方法来巧妙实现分类变量的二值化处理。
+
 ## 二值化处理的效果如下：
 数据处理前：
 ```
@@ -38,7 +39,8 @@ author: MaShu
 +------+------+-----+---+---+--------+--------+-------+-------+-------+-----+-----+
 ```
 ## 如何实现二值化？——Pivot方法介绍
-** 什么Pivot?
+** 什么是Pivot? **
+
 具体见下图：
 ![](https://github.com/tjmashu/tjmashu.github.io/blob/master/pics/Pivot%20%E5%92%8CUnpivot.png)
 先看下面的例子了解下PySpark DataFrame的Pivot实现方法：
