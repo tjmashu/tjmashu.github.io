@@ -174,7 +174,9 @@ axis=0，对行进行抽样。
 +------+---------+
 ```
 `df.select('userid','gender','level').show()`
+
 等价于`df.select(df.userid, df.gender, df.level).show()`
+
 等价于`df.select(df['userid'], df['gender'], df['level']).show()`
 ```py
 +------+------+-----+
