@@ -41,7 +41,7 @@ author: MaShu
 ## 如何实现二值化？——Pivot方法介绍
 **什么是Pivot?**
 具体见下图：
-![](https://github.com/tjmashu/tjmashu.github.io/blob/master/pics/Pivot%20%E5%92%8CUnpivot.png)
+![](https://github.com/tjmashu/tjmashu.github.io/blob/master/pics/Pivot%20%E5%92%8CUnpivot.png?raw=true)
 先看下面的例子了解下PySpark DataFrame的Pivot实现方法：
 ```
 from pyspark.sql import SparkSession
