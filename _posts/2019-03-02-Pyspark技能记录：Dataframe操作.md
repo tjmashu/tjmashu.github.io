@@ -16,6 +16,8 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 ```
 ## 2.创建DataFrame
+**用Spark SQL创建DataFrame:**
 ```
 sparkdf = spark.sql(""" select * from table_name """)
 ```
+**手动创建DataFrame**
