@@ -86,17 +86,6 @@ df1.show()
 +------+------+-----+---+
 +------+------+-----+---+
 ```
-##### 3.2.4 输出list类型，list中每个元素是Row类
-`df.collect()`
-```
-[Row(userid='0001', gender='F', level='H', vip=1),
- Row(userid='0002', gender='M', level='M', vip=0),
- Row(userid='0003', gender='F', level='L', vip=1),
- Row(userid='0004', gender='F', level='H', vip=0),
- Row(userid='0005', gender='M', level='M', vip=1),
- Row(userid='0006', gender='F', level='H', vip=1)]
- ```
-
 ##### 3.3.5 行去重
 **输出是DataFrame:**
 `df.select('level').distinct().show()`
@@ -109,7 +98,7 @@ df1.show()
 |    H|
 +-----+
 ```
-**输出是DataFrame:**
+**输出是Row类:**
 `df.select('level').distinct().collect()`
 ```
 [Row(level='M'), Row(level='L'), Row(level='H')]
