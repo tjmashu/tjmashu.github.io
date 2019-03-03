@@ -28,7 +28,7 @@ df = spark.createDataFrame([('0001','F','H',1), ('0002','M','M',0), ('0003','F',
 ```
 ## 3.查询
 #### 3.1 概况查询
-##### **3.1.1以树的形式打印概要:**
+##### 3.1.1 以树形式打印概要
 `df.printSchema()`
 ```
 root
@@ -37,7 +37,7 @@ root
  |-- level: string (nullable = true)
  |-- vip: long (nullable = true)
 ```
-##### **3.1.2查询概况:**
+##### 3.1.2 查询概况
 `df.describe().show()`
 ```
 +-------+------------------+------+-----+------------------+
@@ -75,7 +75,7 @@ only showing top 3 rows
 ```
 6
 ```
-##### 3.2.4 查询某列为null的行：
+##### 3.2.4 查询某列为null的行
 ```
 from pyspark.sql.functions import isnull
 df1=df.filter(isnull('gender'))
@@ -86,7 +86,7 @@ df1.show()
 +------+------+-----+---+
 +------+------+-----+---+
 ```
-##### 3.2.4 输出list类型，list中每个元素是Row类：
+##### 3.2.4 输出list类型，list中每个元素是Row类
 `df.collect()`
 ```
 [Row(userid='0001', gender='F', level='H', vip=1),
