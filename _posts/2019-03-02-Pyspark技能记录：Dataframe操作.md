@@ -207,10 +207,10 @@ only showing top 5 rows
 ```
 #### 5.4 新增一列
 **新增一列全部赋值为常量：**
+`df.withColumn('label',F.lit(0))`
 ```py
-from pyspark.sql import functions
-df = df.withColumn('label',functions.lit(0))
-df.show()
+import pyspark.sql.functions as F
+df.withColumn('label',F.lit(0)).show()
 
 +------+------+-----+---+-----+
 |userid|gender|level|vip|label|
@@ -278,7 +278,7 @@ root
 |  0006|     F|    H|  1|    0|
 +------+------+-----+---+-----+
 ```
-### 6.选择和切片
+## 6.选择和切片
 #### 6.1 直接使用filter
 `df.select('userid','gender','vip').filter(df['vip']>0).show()`
 或者
@@ -336,5 +336,53 @@ spark.sql("select count(1) from df5").show()
 ## 7. 合并 join / union
 #### 7.1 横向拼接
 `df.union(df).show()`或者`df.unionAll(df.limit(1)).show()`,二者好像没看出啥区别。
+#### 7.2 纵向拼接
+`df.join(dfa, ["userid"],'left').show()`
+```py
+dfa=spark.createDataFrame([('0001',2000), ('0002',4000), ('0005',3000)], ['userid','salary'])
+dfb=spark.createDataFrame([('0001','2018-10-01 10:10:01'), ('0002','2018-11-01 10:10:01'), ('0003','2018-09-01 10:10:01'),
+                        ('0004','2018-10-18 10:10:01'), ('0005','2018-10-19 10:10:01'), ('0006','2019-01-01 10:10:01')
+                        ], ['userid','regdt'])
+df=df.join(dfa, ["userid"],'left').join(dfb, ["userid"],'left')
 
++------+------+-----+---+-----+------+------+-------------------+
+|userid|gender|level|vip|label|label1|salary|              regdt|
++------+------+-----+---+-----+------+------+-------------------+
+|  0002|     M|    M|  0|    0|     0|  4000|2018-11-01 10:10:01|
+|  0003|     F|    L|  1|    0|     0|  null|2018-09-01 10:10:01|
+|  0001|     F|    H|  1|    0|     0|  2000|2018-10-01 10:10:01|
+|  0006|     F|    H|  1|    0|     0|  null|2019-01-01 10:10:01|
+|  0004|     F|    H|  0|    0|     0|  null|2018-10-18 10:10:01|
+|  0005|     M|    M|  1|    0|     0|  3000|2018-10-19 10:10:01|
++------+------+-----+---+-----+------+------+-------------------+
+```
+#### 7.3 分组排序
+```py
+import pyspark.sql.functions as F
+from pyspark.sql import Window
+# row_number()函数
+df.withColumn("row_number", F.row_number().over(Window.partitionBy('gender').orderBy('regdt'))).show() 
+
++------+------+-----+---+-----+------+------+-------------------+----------+
+|userid|gender|level|vip|label|label1|salary|              regdt|row_number|
++------+------+-----+---+-----+------+------+-------------------+----------+
+|  0003|     F|    L|  1|    0|     0|  null|2018-09-01 10:10:01|         1|
+|  0001|     F|    H|  1|    0|     0|  2000|2018-10-01 10:10:01|         2|
+|  0004|     F|    H|  0|    0|     0|  null|2018-10-18 10:10:01|         3|
+|  0006|     F|    H|  1|    0|     0|  null|2019-01-01 10:10:01|         4|
+|  0005|     M|    M|  1|    0|     0|  3000|2018-10-19 10:10:01|         1|
+|  0002|     M|    M|  0|    0|     0|  4000|2018-11-01 10:10:01|         2|
++------+------+-----+---+-----+------+------+-------------------+----------+
+```
+#### 7.3 差集
+`df.select('userid').subtract(dfa.select('userid')).show()`
+```py
++------+
+|userid|
++------+
+|  0003|
+|  0006|
+|  0004|
++------+
+```
 （未完待续。。）
